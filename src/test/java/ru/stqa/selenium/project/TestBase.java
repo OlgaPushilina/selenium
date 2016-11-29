@@ -17,9 +17,11 @@ public class TestBase {
 
   protected WebDriver driver;
   protected WebDriverWait wait;
+  protected Properties properties = new Properties();
 
   @Before
   public void start() throws IOException {
+    properties.load(new FileReader(new File("src/test/resources/local.properties")));
     driver = new ChromeDriver();
     wait = new WebDriverWait(driver, 10);
   }
@@ -31,8 +33,6 @@ public class TestBase {
   }
 
   public void adminLogin() throws IOException {
-    Properties properties = new Properties();
-    properties.load(new FileReader(new File("src/test/resources/local.properties")));
     driver.get(properties.getProperty("adminUrl"));
     driver.findElement(By.name("username")).sendKeys(properties.getProperty("adminUsername"));
     driver.findElement(By.name("password")).sendKeys(properties.getProperty("adminPassword"));
