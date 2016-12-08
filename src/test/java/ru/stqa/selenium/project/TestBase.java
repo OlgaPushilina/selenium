@@ -4,8 +4,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
@@ -24,6 +27,7 @@ public class TestBase {
     properties.load(new FileReader(new File("src/test/resources/local.properties")));
     driver = new ChromeDriver();
     wait = new WebDriverWait(driver, 10);
+    driver.manage().window().maximize();
   }
 
   @After
@@ -39,13 +43,32 @@ public class TestBase {
     driver.findElement(By.name("login")).click();
   }
 
-  public void pathToDriver() {
-    // first way - set System property
-    System.setProperty("webdriver.chrome.driver", "C:/Tools/chromedriver.exe");
-    // second way - DriverService
-    driver = new ChromeDriver(
-    new ChromeDriverService.Builder().
-    usingDriverExecutable(new File("C:/Tools/chromedriver.exe")).build());
+  public void sendKeys (By locator, String keys) {
+    driver.findElement(locator).sendKeys(keys);
   }
+
+  public void clearAndSendKeys (By locator, String keys) {
+    WebElement element = driver.findElement(locator);
+    element.clear();
+    element.sendKeys(keys);
+  }
+
+  public void click (By locator) {
+    driver.findElement(locator).click();
+  }
+
+  public void select(By locator, String value) {
+    Select select = new Select(driver.findElement(locator));
+    select.selectByValue(value);
+  }
+
+  public void check(By locator) {
+    WebElement checkbox = driver.findElement(locator);
+    if (!checkbox.isSelected()) {
+      checkbox.click();
+    }
+  }
+
+
 
 }

@@ -48,14 +48,6 @@ public class userSignUp extends TestBase {
     click(By.name("login"));
   }
 
-  public void sendKeys (By locator, String keys) {
-    driver.findElement(locator).sendKeys(keys);
-  }
-
-  public void click (By locator) {
-    driver.findElement(locator).click();
-  }
-
   public void logout() {
     click(By.cssSelector(".content a[href$=logout]"));
   }
