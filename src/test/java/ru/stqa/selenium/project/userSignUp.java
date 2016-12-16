@@ -10,7 +10,7 @@ import java.util.Random;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
-public class userSignUp extends TestBase {
+public class UserSignUp extends TestBase {
 
   @Test
   public void testSignUp() {
