@@ -1,29 +1,23 @@
 package ru.stqa.selenium.page_objects;
 
 import org.junit.Before;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestBase {
 
-  public static ThreadLocal<WebDriver> tlDriver = new ThreadLocal<>();
-  public WebDriver driver;
-  public WebDriverWait wait;
+  public static ThreadLocal<Application> tlApp = new ThreadLocal<>();
+  public Application app;
 
   @Before
   public void start() {
-    if (tlDriver.get() != null) {
-      driver = tlDriver.get();
-      wait = new WebDriverWait(driver, 10);
+    if (tlApp.get() != null) {
+      app = tlApp.get();
       return;
     }
 
-    driver = new ChromeDriver();
-    tlDriver.set(driver);
-    wait = new WebDriverWait(driver, 10);
+    app = new Application();
+    tlApp.set(app);
 
     Runtime.getRuntime().addShutdownHook(
-            new Thread(() -> {driver.quit(); driver = null;}));
+            new Thread(() -> {app.quit(); app = null;}));
   }
 }
