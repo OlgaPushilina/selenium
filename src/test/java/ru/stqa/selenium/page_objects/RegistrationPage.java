@@ -3,57 +3,51 @@ package ru.stqa.selenium.page_objects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class RegistrationPage extends Page {
 
   public RegistrationPage(WebDriver driver) {
     super(driver);
+    PageFactory.initElements(driver, this);
   }
 
   public void open() {
     driver.get("http://localhost/litecart/en/create_account");
   }
 
-  public WebElement firstnameInput() {
-    return driver.findElement(By.name("firstname"));
-  }
+  @FindBy(name = "firstname" )
+  public WebElement firstnameInput;
 
-  public WebElement lastnameInput() {
-    return driver.findElement(By.name("lastname"));
-  }
+  @FindBy(name = "lastname" )
+  public WebElement lastnameInput;
 
-  public WebElement address1Input() {
-    return driver.findElement(By.name("address1"));
-  }
+  @FindBy(name = "address1" )
+  public WebElement address1Input;
 
-  public WebElement postcodeInput() {
-    return driver.findElement(By.name("postcode"));
-  }
+  @FindBy(name = "postcode" )
+  public WebElement postcodeInput;
 
-  public WebElement cityInput() {
-    return driver.findElement(By.name("city"));
-  }
+  @FindBy(name = "city" )
+  public WebElement cityInput;
 
-  public WebElement emailInput() {
-    return driver.findElement(By.name("email"));
-  }
+  @FindBy(name = "email" )
+  public WebElement emailInput;
 
-  public WebElement phoneInput() {
-    return driver.findElement(By.name("phone"));
-  }
+  @FindBy(name = "phone" )
+  public WebElement phoneInput;
 
-  public WebElement passwordInput() {
-    return driver.findElement(By.name("password"));
-  }
+  @FindBy(name = "password" )
+  public WebElement passwordInput;
 
-  public WebElement confirmed_passwordInput() {
-    return driver.findElement(By.name("confirmed_password"));
-  }
+  @FindBy(name = "confirmed_password" )
+  public WebElement confirmedPasswordInput;
 
-  public WebElement createAccountButton() {
-    return driver.findElement(By.name("create_account"));
-  }
+  @FindBy(name = "create_account" )
+  public WebElement createAccountButton;
+
 
   public void selectCountry(String country) {
     driver.findElement(By.cssSelector("[id^=select2-country_code]")).click();
@@ -62,7 +56,6 @@ public class RegistrationPage extends Page {
   }
 
   public void selectZone(String zone) {
-
     wait.until((WebDriver d) -> d.findElement(
             By.cssSelector(String.format("select[name=zone_code] option[value=%s]", zone))));
     new Select(driver.findElement(By.cssSelector("select[name=zone_code"))).selectByValue(zone);
