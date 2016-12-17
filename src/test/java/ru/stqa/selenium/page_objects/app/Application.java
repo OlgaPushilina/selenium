@@ -1,8 +1,12 @@
-package ru.stqa.selenium.page_objects;
+package ru.stqa.selenium.page_objects.app;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.stqa.selenium.page_objects.model.Customer;
+import ru.stqa.selenium.page_objects.pages.CustomerListPage;
+import ru.stqa.selenium.page_objects.pages.RegistrationPage;
+import ru.stqa.selenium.page_objects.pages.AdminPanelLoginPage;
 
 import java.util.Set;
 

@@ -1,6 +1,7 @@
-package ru.stqa.selenium.page_objects;
+package ru.stqa.selenium.page_objects.tests;
 
 import com.tngtech.java.junit.dataprovider.DataProvider;
+import ru.stqa.selenium.page_objects.model.Customer;
 
 public class DataProviders {
 

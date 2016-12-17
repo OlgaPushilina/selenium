@@ -1,4 +1,4 @@
-package ru.stqa.selenium.page_objects;
+package ru.stqa.selenium.page_objects.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -31,5 +31,4 @@ public class CustomerListPage extends Page {
             .map(e -> e.findElements(By.tagName("td")).get(2).getText())
             .collect(toSet());
   }
-
 }

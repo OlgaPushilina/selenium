@@ -1,9 +1,10 @@
-package ru.stqa.selenium.page_objects;
+package ru.stqa.selenium.page_objects.tests;
 
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import ru.stqa.selenium.page_objects.model.Customer;
 
 import java.util.Set;
 

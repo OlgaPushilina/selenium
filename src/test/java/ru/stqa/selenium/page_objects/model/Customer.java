@@ -1,4 +1,4 @@
-package ru.stqa.selenium.page_objects;
+package ru.stqa.selenium.page_objects.model;
 
 public class Customer {
 
