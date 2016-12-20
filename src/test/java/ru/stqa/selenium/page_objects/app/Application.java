@@ -12,7 +12,6 @@ import java.util.Set;
 
 public class Application {
 
-  private WebDriverWait wait;
   private WebDriver driver;
   private RegistrationPage registrationPage;
   private AdminPanelLoginPage adminPanelLoginPage;
@@ -20,7 +19,6 @@ public class Application {
 
   public Application() {
     driver = new ChromeDriver();
-    wait = new WebDriverWait(driver, 10);
     registrationPage = new RegistrationPage(driver);
     adminPanelLoginPage = new AdminPanelLoginPage(driver);
     customerListPage = new CustomerListPage(driver);
